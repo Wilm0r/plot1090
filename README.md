@@ -7,21 +7,22 @@ with a visualisation on top of a Google Map.
 
 There are three scripts:
 
-* plotter.py - Plots lines of all flights paths found in the file.
-* edge.py - The common edge plot, showing the edge of your coverage
+* `plotter.py` Plots lines of all flights paths found in the file.
+* `edge.py` The common edge plot, showing the edge of your coverage
   area, around a given central point.
-* dotter.py - First thing I wrote. Not very interesting, instead of
+* `dotter.py` First thing I wrote. Not very interesting, instead of
   lines it draws dots showing how many planes were spotted in the area
   near it.
 
 They share a bunch of flags:
 
-* -a: Alitude range, ignore messages if the plane was outside that
-  altitude range.
-* -c: Coordinates of center, used to automatically center the map there,
-  and used as the center (receiver location) for the edge plot.
-* -A: Google Maps API key. By default it'll use mine which for you will
-  work only when loading result files from file:///.
+* `-a --altitude-range` Alitude range, ignore messages if the plane was
+  outside that altitude range.
+* `-c --center` Coordinates of center, used to automatically center the
+  map there, and used as the center (receiver location) for the edge
+  plot.
+* `-A --api-key` Google Maps API key.  By default it'll use mine which
+  for you will work only when loading result files from file:///.
 
 # Example
 
@@ -41,6 +42,17 @@ Edge plot of all traffic over 10k feet:
 # Example result
 
 ![](https://gaa.st/~wilmer/lhr.png)
+
+# Dependencies
+
+Nothing too special other than geographiclib:
+
+```
+sudo apt-get install python-geographiclib
+```
+
+`dotter.py` still used geopy but it's not a very interesting script
+anyway.
 
 # Licence
 
