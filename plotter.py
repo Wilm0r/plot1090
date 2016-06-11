@@ -24,12 +24,20 @@ for line in sys.stdin.xreadlines():
 	if id in polydict:
 		last = polydict[id]["poly"][-1]
 		d = Geodesic.WGS84.Inverse(last[0], last[1], lat, lon)
+		# If our latest data point was >2.5km away, make a new
+		# polygon instead. (Should maybe do the same with time
+		# differences to avoid strange lines between approach
+		# and departure.)
 		if d["s12"] > 2500: # 2.5km
 			# add len check!
 			polys.append(polydict[id]["poly"])
 			polydict[id] = {"poly": []}
 		elif len(polydict[id]) >= 2:
-			# Still going in the same direction?
+			# Still going in the same direction? Ugly fuzzy
+			# trick to try to compress files by combining
+			# straight lines into a single pair of
+			# coordinates. Makes files a lot smaller and
+			# easier to render.
 			if (abs(polydict[id]["azi"] - d["azi1"]) % 360) < 2.5:
 				#print "Similar: %r %r" % (d, dlast)
 				polydict[id]["poly"].pop()

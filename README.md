@@ -23,6 +23,25 @@ They share a bunch of flags:
 * -A: Google Maps API key. By default it'll use mine which for you will
   work only when loading result files from file:///.
 
+# Example
+
+Plot all approach + departure traffic (below 10k) feet only from a
+stream you somehow captured at LHR T5:
+
+```
+./plotter.py -a -10000 -c 51.4729347,-0.4881842 < adsb.log > paths.html
+```
+
+Edge plot of all traffic over 10k feet:
+
+```
+./edge.py -a 10000- -c 51.4729347,-0.4881842 < adsb.log > edge-plot.html
+```
+
+# Example result
+
+![](https://gaa.st/~wilmer/lhr.png)
+
 # Licence
 
 Copyright © 2015 Wilmer van der Gaast
