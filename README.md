@@ -24,7 +24,28 @@ They share a bunch of flags:
 * `-A --api-key` Google Maps API key.  By default it'll use mine which
   for you will work only when loading result files from file:///.
 
+# Dependencies
+
+Nothing too special other than geographiclib:
+
+```
+sudo apt-get install python-geographiclib
+```
+
+`dotter.py` still used geopy but it's not a very interesting script
+anyway.
+
 # Example
+
+First, start capturing some data from dump1090 (or similar):
+
+```
+nc localhost 30003 > adsb.log
+```
+
+(Hit Ctrl-C to abort, or you could use
+[`timeout(1)`](http://man7.org/linux/man-pages/man1/timeout.1.html) to
+limit runtime.
 
 Plot all approach + departure traffic (below 10k) feet only from a
 stream you somehow captured at LHR T5:
@@ -42,17 +63,6 @@ Edge plot of all traffic over 10k feet:
 # Example result
 
 ![](https://gaa.st/~wilmer/lhr.png)
-
-# Dependencies
-
-Nothing too special other than geographiclib:
-
-```
-sudo apt-get install python-geographiclib
-```
-
-`dotter.py` still used geopy but it's not a very interesting script
-anyway.
 
 # Licence
 
