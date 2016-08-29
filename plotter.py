@@ -55,7 +55,7 @@ misc.update({
 })
 
 plot1090.write_html({
-	"polys": [plot1090.poly2gmaps(p) for p in polys],
+	"polys": [plot1090.poly2gmaps(p) for p in polys if len(p) > 1],
 	"d": misc,
 }, """
 	for (p of polys) {
